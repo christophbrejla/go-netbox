@@ -49,15 +49,15 @@ type ConsolePort struct {
 	// Return the appropriate serializer for the type of connected object.
 	//
 	// Read Only: true
-	ConnectedEndpoint map[string]*string `json:"connected_endpoint,omitempty"`
+	ConnectedEndpoints []map[string]any `json:"connected_endpoints,omitempty"`
 
 	// Connected endpoint reachable
 	// Read Only: true
-	ConnectedEndpointReachable *bool `json:"connected_endpoint_reachable,omitempty"`
+	ConnectedEndpointsReachable *bool `json:"connected_endpoints_reachable,omitempty"`
 
 	// Connected endpoint type
 	// Read Only: true
-	ConnectedEndpointType string `json:"connected_endpoint_type,omitempty"`
+	ConnectedEndpointsType string `json:"connected_endpoints_type,omitempty"`
 
 	// Created
 	// Read Only: true
@@ -404,15 +404,15 @@ func (m *ConsolePort) ContextValidate(ctx context.Context, formats strfmt.Regist
 		res = append(res, err)
 	}
 
-	if err := m.contextValidateConnectedEndpoint(ctx, formats); err != nil {
+	if err := m.contextValidateConnectedEndpoints(ctx, formats); err != nil {
 		res = append(res, err)
 	}
 
-	if err := m.contextValidateConnectedEndpointReachable(ctx, formats); err != nil {
+	if err := m.contextValidateConnectedEndpointsReachable(ctx, formats); err != nil {
 		res = append(res, err)
 	}
 
-	if err := m.contextValidateConnectedEndpointType(ctx, formats); err != nil {
+	if err := m.contextValidateConnectedEndpointsType(ctx, formats); err != nil {
 		res = append(res, err)
 	}
 
@@ -495,23 +495,23 @@ func (m *ConsolePort) contextValidateCable(ctx context.Context, formats strfmt.R
 	return nil
 }
 
-func (m *ConsolePort) contextValidateConnectedEndpoint(ctx context.Context, formats strfmt.Registry) error {
+func (m *ConsolePort) contextValidateConnectedEndpoints(ctx context.Context, formats strfmt.Registry) error {
 
 	return nil
 }
 
-func (m *ConsolePort) contextValidateConnectedEndpointReachable(ctx context.Context, formats strfmt.Registry) error {
+func (m *ConsolePort) contextValidateConnectedEndpointsReachable(ctx context.Context, formats strfmt.Registry) error {
 
-	if err := validate.ReadOnly(ctx, "connected_endpoint_reachable", "body", m.ConnectedEndpointReachable); err != nil {
+	if err := validate.ReadOnly(ctx, "connected_endpoint_reachable", "body", m.ConnectedEndpointsReachable); err != nil {
 		return err
 	}
 
 	return nil
 }
 
-func (m *ConsolePort) contextValidateConnectedEndpointType(ctx context.Context, formats strfmt.Registry) error {
+func (m *ConsolePort) contextValidateConnectedEndpointsType(ctx context.Context, formats strfmt.Registry) error {
 
-	if err := validate.ReadOnly(ctx, "connected_endpoint_type", "body", string(m.ConnectedEndpointType)); err != nil {
+	if err := validate.ReadOnly(ctx, "connected_endpoint_type", "body", string(m.ConnectedEndpointsType)); err != nil {
 		return err
 	}
 

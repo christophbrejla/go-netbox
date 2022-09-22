@@ -58523,22 +58523,25 @@
                     "type": "string",
                     "readOnly": true
                 },
-                "connected_endpoint": {
-                    "title": "Connected endpoint",
-                    "description": "\nReturn the appropriate serializer for the type of connected object.\n",
-                    "type": "object",
-                    "additionalProperties": {
-                        "type": "string",
-                        "x-nullable": true
-                    },
-                    "readOnly": true
+                "connected_endpoints": {
+                    "type": "array",
+                    "items" :{
+                        "title": "Connected endpoint",
+                        "description": "\nReturn the appropriate serializer for the type of connected object.\n",
+                        "type": "object",
+                        "additionalProperties": {
+                            "type": "string",
+                            "x-nullable": true
+                        },
+                        "readOnly": true
+                    }
                 },
-                "connected_endpoint_type": {
+                "connected_endpoints_type": {
                     "title": "Connected endpoint type",
                     "type": "string",
                     "readOnly": true
                 },
-                "connected_endpoint_reachable": {
+                "connected_endpoints_reachable": {
                     "title": "Connected endpoint reachable",
                     "type": "boolean",
                     "readOnly": true
@@ -59076,22 +59079,25 @@
                     "type": "string",
                     "readOnly": true
                 },
-                "connected_endpoint": {
-                    "title": "Connected endpoint",
-                    "description": "\nReturn the appropriate serializer for the type of connected object.\n",
-                    "type": "object",
-                    "additionalProperties": {
-                        "type": "string",
-                        "x-nullable": true
-                    },
-                    "readOnly": true
+                "connected_endpoints": {
+                    "type": "array",
+                    "items": {
+                        "title": "Connected endpoint",
+                        "description": "\nReturn the appropriate serializer for the type of connected object.\n",
+                        "type": "object",
+                        "additionalProperties": {
+                            "type": "string",
+                            "x-nullable": true
+                        },
+                        "readOnly": true
+                    }
                 },
-                "connected_endpoint_type": {
+                "connected_endpoints_type": {
                     "title": "Connected endpoint type",
                     "type": "string",
                     "readOnly": true
                 },
-                "connected_endpoint_reachable": {
+                "connected_endpoints_reachable": {
                     "title": "Connected endpoint reachable",
                     "type": "boolean",
                     "readOnly": true
@@ -59987,7 +59993,8 @@
                 },
                 "position": {
                     "title": "Position (U)",
-                    "type": "integer",
+                    "type": "number",
+                    "format": "decimal",
                     "minimum": 1,
                     "x-nullable": true
                 },

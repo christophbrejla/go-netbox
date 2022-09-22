@@ -106,7 +106,7 @@ type DeviceWithConfigContext struct {
 
 	// Position (U)
 	// Minimum: 1
-	Position *int64 `json:"position,omitempty"`
+	Position *float64 `json:"position,omitempty"`
 
 	// primary ip
 	PrimaryIP *NestedIPAddress `json:"primary_ip,omitempty"`
@@ -478,7 +478,7 @@ func (m *DeviceWithConfigContext) validatePosition(formats strfmt.Registry) erro
 		return nil
 	}
 
-	if err := validate.MinimumInt("position", "body", *m.Position, 1, false); err != nil {
+	if err := validate.Minimum("position", "body", *m.Position, 1, false); err != nil {
 		return err
 	}
 

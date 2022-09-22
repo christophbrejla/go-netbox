@@ -45,7 +45,7 @@ type IPAddress struct {
 
 	// Assigned object
 	// Read Only: true
-	AssignedObject map[string]*string `json:"assigned_object,omitempty"`
+	AssignedObject map[string]any `json:"assigned_object,omitempty"`
 
 	// Assigned object id
 	// Maximum: math.MaxInt64
@@ -94,7 +94,7 @@ type IPAddress struct {
 	NatInside *NestedIPAddress `json:"nat_inside,omitempty"`
 
 	// nat outside
-	NatOutside *NestedIPAddress `json:"nat_outside,omitempty"`
+	NatOutside []*NestedIPAddress `json:"nat_outside,omitempty"`
 
 	// role
 	Role *IPAddressRole `json:"role,omitempty"`
@@ -303,20 +303,20 @@ func (m *IPAddress) validateNatInside(formats strfmt.Registry) error {
 }
 
 func (m *IPAddress) validateNatOutside(formats strfmt.Registry) error {
-	if swag.IsZero(m.NatOutside) { // not required
-		return nil
-	}
+	// if swag.IsZero(m.NatOutside) { // not required
+	// 	return nil
+	// }
 
-	if m.NatOutside != nil {
-		if err := m.NatOutside.Validate(formats); err != nil {
-			if ve, ok := err.(*errors.Validation); ok {
-				return ve.ValidateName("nat_outside")
-			} else if ce, ok := err.(*errors.CompositeError); ok {
-				return ce.ValidateName("nat_outside")
-			}
-			return err
-		}
-	}
+	// if m.NatOutside != nil {
+	// 	if err := m.NatOutside.Validate(formats); err != nil {
+	// 		if ve, ok := err.(*errors.Validation); ok {
+	// 			return ve.ValidateName("nat_outside")
+	// 		} else if ce, ok := err.(*errors.CompositeError); ok {
+	// 			return ce.ValidateName("nat_outside")
+	// 		}
+	// 		return err
+	// 	}
+	// }
 
 	return nil
 }
@@ -576,16 +576,16 @@ func (m *IPAddress) contextValidateNatInside(ctx context.Context, formats strfmt
 
 func (m *IPAddress) contextValidateNatOutside(ctx context.Context, formats strfmt.Registry) error {
 
-	if m.NatOutside != nil {
-		if err := m.NatOutside.ContextValidate(ctx, formats); err != nil {
-			if ve, ok := err.(*errors.Validation); ok {
-				return ve.ValidateName("nat_outside")
-			} else if ce, ok := err.(*errors.CompositeError); ok {
-				return ce.ValidateName("nat_outside")
-			}
-			return err
-		}
-	}
+	// if m.NatOutside != nil {
+	// 	if err := m.NatOutside.ContextValidate(ctx, formats); err != nil {
+	// 		if ve, ok := err.(*errors.Validation); ok {
+	// 			return ve.ValidateName("nat_outside")
+	// 		} else if ce, ok := err.(*errors.CompositeError); ok {
+	// 			return ce.ValidateName("nat_outside")
+	// 		}
+	// 		return err
+	// 	}
+	// }
 
 	return nil
 }
